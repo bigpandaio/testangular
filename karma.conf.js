@@ -9,7 +9,7 @@ module.exports = function (config) {
       'test/lib/sinon-chai-2.4.0.js',
       'test/lib/sinon-1.7.3.js',
 
-      'test/lib/angular/angular-mocks-1.0.7.js',
+      'test/lib/angular/angular-mocks.js',
 
       'public/js/app.js',
 

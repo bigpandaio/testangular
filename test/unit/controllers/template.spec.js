@@ -5,7 +5,7 @@ describe('Boilerplate', function () {
   var expect = chai.expect;
 
   beforeEach(function () {
-//    module('testangular', function($provide) {});
+    module('testangular', function($provide) {});
   });
 
 
