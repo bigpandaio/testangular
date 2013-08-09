@@ -1,0 +1,240 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/images";
+@import "compass/css3/box-shadow";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
+
+body {
+  height: 100%;
+  margin: 0px;
+  background-color: #F4F4F4;
+  font-family: arial;
+}
+
+a {
+  cursor: pointer;
+}
+
+.background {
+  position: relative;
+  height: 233px;
+  width: 100%;
+  background-color: #00A2D9;
+  @include box-shadow(0px 1px 2px 0px rgba(#040404, 0.6));
+
+  .logo {
+    position: relative;
+    background-image: url('../img/login-logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 230px;
+  }
+
+}
+
+@mixin button {
+  height: 30px;
+  color: white;
+  background-color: #4AA9E3;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+
+  @include border-radius(3px);
+  @include background-image(linear-gradient(#55b9f2, #2e9bd9));
+
+  &:hover {
+    @include background-image(linear-gradient(shade(#55b9f2, 5%), #2e9bd9));
+  }
+
+  &:active {
+    @include background-image(linear-gradient(#2e9bd9, #55b9f2));
+    @include box-shadow(rgba(38, 38, 38, 0.2) 6px 5px 8px 0px inset, rgba(38,38,38,0.2) -1px -1px 5px 0px inset);
+  }
+
+  &.submitting {
+    background-color: #F2F2F2;
+    background-image: none;
+    color: #A19999;
+    border: 1px solid #CCCCCC;
+  }
+}
+
+.dialog-container {
+  width: 500px;
+  height: 280px;
+  margin: -20px auto;
+  z-index: 10;
+  position: relative;
+
+  background-color: white;
+
+  border: 1px solid #c7c7c7;
+  @include border-radius(5px);
+
+  .dialog-box {
+    width: 480px;
+    height: 260px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: #F1F1F1;
+
+    border: 1px solid #bebebe;
+
+    .title {
+      font-weight: bold;
+      color: #727272;
+      text-align: center;
+      padding: 10px 0px 10px 0px;
+      @include box-shadow(#D1D1D1 0px 1px 1px, white 0px 2px 1px);
+      margin-bottom: 25px;
+    }
+
+    .form {
+      $form-width: 220px;
+      width: $form-width;
+      margin: 0 auto;
+      padding: 0px 5px 0px 5px;
+
+      .fields {
+        @include border-radius(10px 10px 0px 0px);
+
+        .field {
+
+          background-color: white;
+
+          $field-height: 30px;
+          $icon-width: 40px;
+          $input-width: $form-width - $icon-width - 10;
+
+          border: 1px solid #b2b2b2;
+          @include box-shadow(rgba(black, 0.2) -1px -1px 2px);
+
+          @include border-radius(4px);
+          width: $form-width;
+          margin: 12px 0px 0px 0px;
+          height: $field-height;
+
+          &.focus {
+            @include box-shadow(none);
+            border: 1px solid #3DC0EE;
+          }
+
+          > input {
+            outline: none;
+            border: none;
+            font-size: 14px;
+            height: $field-height - 5;
+            color: #919191;
+            width: $input-width;
+            padding-left: 5px;
+          }
+
+          .wrapper {
+            color: #C3C3C3;
+            height: inherit;
+            float: left;
+            border-right: 1px solid #b2b2b2;
+            background-color: #F9F9F9;
+            width: 40px;
+            text-align: center;
+            line-height: $field-height;
+            vertical-align: middle;
+
+            @include border-left-radius(4px);
+
+          }
+        }
+      }
+
+      .forgot {
+        color: #51b6ef;
+        margin-top: 7px;
+        font-size: 12px;
+
+      }
+
+      .button {
+        @include button;
+        margin: 15px auto;
+        width: $form-width;
+        font-weight: bold;
+      }
+
+      .error {
+        color: #eb4923;
+        font-weight: bold;
+        font-size: 12px;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.forgot-section-container {
+  $container-height: 120px;
+  $container-width: 460px;
+
+  width: $container-width;
+  height: $container-height;
+  margin: 0 auto;
+  margin-top: -130px;
+  z-index: 5;
+
+  background-color: white;
+
+  border: 1px solid #c7c7c7;
+  @include border-radius(5px);
+
+  @include transition-property(margin-top);
+  @include transition-duration(1s);
+
+  &.visible {
+    margin-top: -30px;
+  }
+
+  .forgot-section {
+
+    width: $container-width - 20;
+    height: $container-height - 20;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    @include box-sizing(border-box);
+
+    background-color: #F1F1F1;
+
+    border: 1px solid #bebebe;
+
+    .text-wrapper {
+      margin-top: 20px;
+      .text {
+        font-size: 12px;
+        color: #727272;
+        text-align: center;
+        line-height: 17px;
+
+        a {
+          text-decoration: none;
+          margin-left: 2px;
+          color: #51b6ef;
+        }
+      }
+    }
+
+    .close {
+      margin: 0 auto;
+      width: 54px;
+
+      button {
+        @include button;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
