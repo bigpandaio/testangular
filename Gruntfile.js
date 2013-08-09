@@ -59,7 +59,7 @@ module.exports = function (grunt) {
           pretty: true
         },
         files: {
-          "public/login.html": "app/views/login.jade"
+          "public/index.html": "app/views/index.jade"
         }
       }
     },
