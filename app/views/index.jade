@@ -25,7 +25,7 @@ html.no-js(lang='en', ng-app="testangular")
         script(src='js/app.js')
 
 
-    body
+    body(ng-controller='LoginController')
       .background
       .main-container
           .dialog-container
@@ -42,5 +42,5 @@ html.no-js(lang='en', ng-app="testangular")
                                   .wrapper
                                       i.icon-lock
                                   input(type='password', name='password', id='password', placeholder='Password', ng-model='password')
-                          input.button(type='submit', value='LOGIN')
+                          input.button(type='button', value='LOGIN', ng-click='login()')
                           .error {{error}}
