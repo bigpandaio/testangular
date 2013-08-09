@@ -1,9 +1,9 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   grunt.initConfig({
 
     clean: {
-      main: 'public'
+      main: 'public/**'
     },
 
     copy: {
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     concat: {
       main: {
-        src: ['app/js/**/*.js'] ,
+        src: ['app/js/**/*.js'],
         dest: 'public/js/app.js'
       }
     },
@@ -67,14 +67,10 @@ module.exports = function(grunt) {
     watch: {
 
       main: {
-        files: ['package.json', 'Gruntfile.js', 'app/**'],
-        tasks: ['default']
-      },
-
-      karma: {
-        files: ['app/js/**', 'test/unit/**/*.spec.js'],
-        tasks: ['karma:unit:run']
+        files: ['package.json', 'Gruntfile.js', 'karma.conf.js', 'app/**', 'test/**'],
+        tasks: ['deploy', 'karma:unit:run']
       }
+
     }
 
   });
