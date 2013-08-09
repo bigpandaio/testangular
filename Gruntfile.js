@@ -70,9 +70,7 @@ module.exports = function (grunt) {
         files: ['package.json', 'Gruntfile.js', 'karma.conf.js', 'app/**', 'test/**'],
         tasks: ['deploy', 'karma:unit:run']
       }
-
     }
-
   });
 
   grunt.loadNpmTasks('grunt-karma');
