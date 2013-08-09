@@ -19,7 +19,7 @@ a {
   position: relative;
   height: 233px;
   width: 100%;
-  background-color: #00A2D9;
+  background-color: #d98640;
   @include box-shadow(0px 1px 2px 0px rgba(#040404, 0.6));
 
   .logo {
@@ -35,20 +35,15 @@ a {
 @mixin button {
   height: 30px;
   color: white;
-  background-color: #4AA9E3;
+  background-color: #d98640;
   border: none;
   font-size: 14px;
   cursor: pointer;
 
   @include border-radius(3px);
-  @include background-image(linear-gradient(#55b9f2, #2e9bd9));
-
-  &:hover {
-    @include background-image(linear-gradient(shade(#55b9f2, 5%), #2e9bd9));
-  }
 
   &:active {
-    @include background-image(linear-gradient(#2e9bd9, #55b9f2));
+    @include background-image(linear-gradient(#d98640, #f2b25a));
     @include box-shadow(rgba(38, 38, 38, 0.2) 6px 5px 8px 0px inset, rgba(38,38,38,0.2) -1px -1px 5px 0px inset);
   }
 
@@ -149,13 +144,6 @@ a {
         }
       }
 
-      .forgot {
-        color: #51b6ef;
-        margin-top: 7px;
-        font-size: 12px;
-
-      }
-
       .button {
         @include button;
         margin: 15px auto;
@@ -169,71 +157,6 @@ a {
         font-size: 12px;
         margin: 0 auto;
         text-align: center;
-      }
-    }
-  }
-}
-
-.forgot-section-container {
-  $container-height: 120px;
-  $container-width: 460px;
-
-  width: $container-width;
-  height: $container-height;
-  margin: 0 auto;
-  margin-top: -130px;
-  z-index: 5;
-
-  background-color: white;
-
-  border: 1px solid #c7c7c7;
-  @include border-radius(5px);
-
-  @include transition-property(margin-top);
-  @include transition-duration(1s);
-
-  &.visible {
-    margin-top: -30px;
-  }
-
-  .forgot-section {
-
-    width: $container-width - 20;
-    height: $container-height - 20;
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    @include box-sizing(border-box);
-
-    background-color: #F1F1F1;
-
-    border: 1px solid #bebebe;
-
-    .text-wrapper {
-      margin-top: 20px;
-      .text {
-        font-size: 12px;
-        color: #727272;
-        text-align: center;
-        line-height: 17px;
-
-        a {
-          text-decoration: none;
-          margin-left: 2px;
-          color: #51b6ef;
-        }
-      }
-    }
-
-    .close {
-      margin: 0 auto;
-      width: 54px;
-
-      button {
-        @include button;
-        margin-top: 10px;
-        margin-bottom: 10px;
       }
     }
   }
