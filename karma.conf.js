@@ -1,7 +1,7 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: 'mocha',
+    frameworks: ['mocha'],
     files: [
       'public/lib/js/angular/angular.min.js',
 
@@ -58,12 +58,18 @@ module.exports = function (config) {
 
     // report which specs are slower than 500ms
     // CLI --report-slower-than 500
-    reportSlowerThan: 500
+    reportSlowerThan: 500,
 
-//    plugins: [
-//      'karma-chrome-launcher',
-//      'karma-firefox-launcher'
-//    ]
+    plugins: [
+      // Launchers
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
+
+      // Framework
+      'karma-mocha'
+
+    ]
 
 
   })
