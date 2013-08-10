@@ -71,6 +71,12 @@ module.exports = function (grunt) {
         tasks: ['deploy', 'karma:unit:run']
       }
 
+    },
+
+    execute: {
+      target: {
+        src: ['server.js']
+      }
     }
 
   });
@@ -83,10 +89,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-execute');
 
-  grunt.registerTask('server', ['connect']);
+  grunt.registerTask('server', ['execute']);
 
   grunt.registerTask('deploy', ['clean', 'copy', 'concat', 'compass', 'jade']);
   grunt.registerTask('test', ['deploy', 'karma:continuous']);
+
   return grunt.registerTask('default', ['deploy', 'karma:unit', 'watch']);
 }
