@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+// Must be configured to parse incoming JSON
+app.use(express.bodyParser());
+
 // Serves files of our Angular.JS application
 app.use(express.static(__dirname + '/public'));
 
@@ -12,10 +15,6 @@ app.post('/login', function(req, res){
     res.send(401);
   }
 
-});
-
-app.get('/', function(req, res){
-  res.send(200);
 });
 
 app.listen(3000);
