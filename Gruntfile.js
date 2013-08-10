@@ -78,7 +78,6 @@ module.exports = function (grunt) {
         src: ['server.js']
       }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-karma');
