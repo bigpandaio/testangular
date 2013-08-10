@@ -44,7 +44,7 @@ app.controller('LoginController', ['$scope', function($scope) {
 //      function() {
 //        // set error to invalid user name / password
 //      }
-  );
+//  );
 
 
 
