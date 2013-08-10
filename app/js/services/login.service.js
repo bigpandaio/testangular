@@ -1,6 +1,6 @@
 app.service('LoginService', ['$http', '$q', function ($http, $q) {
 
-  this.login = function (username, password) {
+  this.login = function (username, password, callback) {
     var deferred = $q.defer();
 
     var futureResponse = $http.post('http://localhost:3000/login', {username: username, password: password});
@@ -13,6 +13,16 @@ app.service('LoginService', ['$http', '$q', function ($http, $q) {
         deferred.reject(response.data);
       }
     })
+
+    // If a callback function was passed, make sure the
+    // promise resolution is delegated to the callback
+    if (callback && typeof callback === 'function') {
+      deferred.promise.then(function(data) {
+        callback(null, data);
+      }, function(error) {
+        callback(error);
+      });
+    }
 
     return deferred.promise;
   }
