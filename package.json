@@ -27,7 +27,7 @@
     "karma-chrome-launcher": "~0.1",
     "karma-firefox-launcher": "~0.1",
 
-    "express": "3.x",
+    "express": "3.x"
 
   }
 }
