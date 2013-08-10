@@ -32,12 +32,12 @@ html.no-js(lang='en', ng-app="testangular")
               .dialog-box
                   .title LOG IN
                   form
-                      .form
+                      .form(signin-validator)
                           .fields
                               .field
                                   .wrapper
                                       i.icon-envelope
-                                  input(type='email', name='username', id='username', placeholder='Email', ng-model='username')
+                                  input(type='text', name='username', id='username', placeholder='Email', ng-model='username')
                               .field
                                   .wrapper
                                       i.icon-lock
