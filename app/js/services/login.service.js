@@ -8,7 +8,7 @@ app.service('LoginService', ['$http', '$q', function ($http, $q) {
       deferred.resolve({});
     }, function (response) {
       if (response.status == 401) {
-        deferred.reject("Invalid username or password");
+        deferred.reject(new Error("Invalid username or password"));
       } else {
         deferred.reject(response.data);
       }

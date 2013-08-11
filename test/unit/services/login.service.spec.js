@@ -50,29 +50,31 @@ describe('Login controller tests', function () {
           // Use the whenX methods to configure Backend Definitions
           $httpBackend.whenPOST(/http:\/\/.+\/login/).respond(401);
           loginService.login("wileecayote@acme.com", "testangular", function (error) {
-            expect(error).to.equal('Invalid username or password');
+            expect(error).to.be.instanceof(Error);
+            expect(error.message).to.equal('Invalid username or password');
           });
 
           $httpBackend.flush();
 
         }]));
 
-    // This is the exact same test case as above only using the Promise paradigm instead of plain old callbacks.
+    // This is the exact same test case as above only this time we use the Promise paradigm instead of plain old callbacks.
     // Look how nice the code looks!
-//    it('should handle HTTP status code 401', function() {
-//
-//      inject(['$httpBackend', 'LoginService', function($httpBackend, loginService) {
-//
-//        $httpBackend.whenPOST(/http:\/\/.+\/login/).respond(401);
-//        var promise = loginService.login("wileecayote@acme.com", "testangular");
-//
-//        $httpBackend.flush();
-//
-//        expect(promise).to.fail.with('Invalid username or password');
-//
-//
-//      }]);
-//    })
+    it('should handle HTTP status code 401', function() {
+
+      inject(['$httpBackend', 'LoginService', function($httpBackend, loginService) {
+
+        $httpBackend.whenPOST(/http:\/\/.+\/login/).respond(401);
+        var promise = loginService.login("wileecayote@acme.com", "testangular");
+
+        $httpBackend.flush();
+
+        // We use the chai-as-promised extension to perfrom assertions on promises
+        expect(promise).to.be.rejected.with("Invalid username or password");
+
+
+      }]);
+    })
   })
 
 
