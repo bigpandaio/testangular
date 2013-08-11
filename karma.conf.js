@@ -4,15 +4,9 @@ module.exports = function (config) {
     frameworks: ['mocha'],
     files: [
       'public/lib/js/angular/angular.min.js',
-
-      'test/lib/chai-1.7.2.js',
-      'test/lib/sinon-chai-2.4.0.js',
-      'test/lib/sinon-1.7.3.js',
-
-      'test/lib/angular/angular-mocks.js',
-
       'public/js/app.js',
 
+      'test/lib/**/*.js',
       'test/unit/**/*.spec.js'
     ],
 
