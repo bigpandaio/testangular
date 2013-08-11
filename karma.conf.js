@@ -6,7 +6,7 @@ module.exports = function (config) {
       'public/lib/js/angular/angular.min.js',
       'public/js/app.js',
 
-      'test/lib/**/*.js',
+      'test/lib/**',
       'test/unit/**/*.spec.js'
     ],
 
