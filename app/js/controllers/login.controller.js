@@ -7,7 +7,6 @@ app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', funct
   $scope.username = null;
   $scope.password = null;
   $scope.error = null;
-  $scope.valid = false;
 
   // Step 5: Add the function without functionallity
 
