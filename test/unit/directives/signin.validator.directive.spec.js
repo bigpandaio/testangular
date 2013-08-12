@@ -7,8 +7,6 @@ describe('Signin validator directive tests', function () {
 
   // Step 2: Add before each with module, inject expect
 
-  var inject = angular.mock.inject;
-  var module = angular.mock.module;
   var expect = chai.expect;
 
 
@@ -35,15 +33,14 @@ describe('Signin validator directive tests', function () {
 
   // Step 4: mark the form as invalid if nothing inserted
 
-  describe('Invalid values', function() {
+  describe('Invalid Email', function() {
 
     it('Should be invalid if nothing entered', function() {
 
-      // Scope changed whould have been placed here.
-
+      // Run the digest loop to allow the hooks to catch the changes
       scope.$digest();
 
-      expect(scope.valid).to.be.eq(false);
+      expect(scope.valid).to.be.false;
     });
 
 
@@ -52,14 +49,15 @@ describe('Signin validator directive tests', function () {
 
       scope.username = "test";
 
+      // Run the digest loop to allow the hooks to catch the changes
       scope.$digest();
 
-      expect(scope.valid).to.be.eq(false);
+      expect(scope.valid).to.be.false;
     });
   });
 
 
-  // Step 6: Add more test for valid
+  // Step 6: Add tests for valid email
 
   describe('Valid email', function() {
 
@@ -69,7 +67,7 @@ describe('Signin validator directive tests', function () {
 
       scope.$digest();
 
-      expect(scope.valid).to.be.eq(true);
+      expect(scope.valid).to.be.true;
     });
   });
 
