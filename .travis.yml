@@ -7,4 +7,4 @@ before_install:
 before_script:
   - npm install -g grunt-cli
   - gem install compass
-  - grunt server
+  - grunt server &
