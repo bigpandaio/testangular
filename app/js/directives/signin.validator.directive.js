@@ -4,7 +4,7 @@ app.directive('signinValidator', function() {
   return {
     restrict:'A',
 
-    link: function(scope, element) {
+    link: function(scope) {
 
       scope.valid = false;
 

@@ -29,13 +29,6 @@ describe('Login controller tests', function () {
       expect(scope).to.have.property("password", null);
       expect(scope).to.have.property("error", null);
     }));
-
-    it('Should start as invalid', inject(function($controller, $rootScope) {
-      var scope = $rootScope.$new();
-      $controller("LoginController", { $scope: scope });
-
-      expect(scope).to.have.property("valid", false);
-    }));
   });
 
 
