@@ -49,7 +49,7 @@ describe('Login controller tests', function () {
 
       scope.login();
 
-      expect(scope.error).to.be.eq("Please fill in all fields");
+      expect(scope.error).to.be.eq("Invalid email format");
     }));
 
 
@@ -63,7 +63,7 @@ describe('Login controller tests', function () {
 
       scope.login();
 
-      expect(scope.error).to.be.eq("Please fill in all fields");
+      expect(scope.error).to.be.eq("Invalid email format");
     }));
 
     // Step 9: Add a check login service wasn't called

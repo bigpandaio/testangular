@@ -10,7 +10,7 @@ describe('End to end test for the login form', function () {
     element('input[type="submit"]').click();
 
     var errorDiv = element('.error', 'Error div');
-    expect(errorDiv.text()).toMatch(/Please.+/);
+    expect(errorDiv.text()).toMatch(/Invalid.+/);
     expect(errorDiv.css('color')).toEqual('rgb(235, 73, 35)');
 
   });

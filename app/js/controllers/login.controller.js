@@ -27,12 +27,14 @@ app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', funct
 
   $scope.login = function() {
     if (!$scope.valid) {
-      $scope.error = "Please fill in all fields";
+      $scope.error = "Invalid email format";
 
     } else {
       // TODO - submitting class ?
 
       $scope.error = null;
+      $scope.success = null;
+
 
       loginService.login($scope.username, $scope.password, function(error, data) {
         if (error) {
