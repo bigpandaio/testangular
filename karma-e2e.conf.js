@@ -12,7 +12,7 @@ module.exports = function (config) {
     reporters: ['dots'],
 
     // web server port
-    port: 9876,
+    port: 9877,
 
     // enable / disable colors in the output (reporters and logs)
     // CLI --colors --no-colors
@@ -36,7 +36,7 @@ module.exports = function (config) {
     // - PhantomJS
     // - IE (only Windows)
     // CLI --browsers Chrome,Firefox,Safari
-    browsers: ['Chrome'],
+    browsers: process.env.TRAVIS ? 'Firefox' : ['Chrome', 'Firefox', 'Safari'],
 
     urlRoot : '/__e2e/',
     proxies: {
@@ -52,14 +52,15 @@ module.exports = function (config) {
     // CLI --single-run --no-single-run
     singleRun: false,
 
-    // report which specs are slower than 500ms
-    // CLI --report-slower-than 500
-    reportSlowerThan: 500,
+    // report which specs are slower than 5000ms
+    // CLI --report-slower-than 5000
+    reportSlowerThan: 5000,
 
     plugins: [
       // Launchers
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-safari-launcher',
 
       //Framework
       'karma-ng-scenario'

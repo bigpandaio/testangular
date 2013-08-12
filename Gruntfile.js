@@ -32,13 +32,20 @@ module.exports = function (grunt) {
     },
 
     karma: {
-      options: {
+      unit: {
+        background: true,
         configFile: 'karma.conf.js'
       },
-      unit: {
-        background: true
-      },
       continuous: {
+        singleRun: true,
+        configFile: 'karma.conf.js'
+      },
+      e2e: {
+        background: true,
+        configFile: 'karma-e2e.conf.js'
+      },
+      continuous_e2e: {
+        configFile: 'karma-e2e.conf.js',
         singleRun: true
       }
     },
@@ -58,7 +65,7 @@ module.exports = function (grunt) {
 
       main: {
         files: ['package.json', 'Gruntfile.js', 'karma.conf.js', 'app/**', 'test/**'],
-        tasks: ['deploy', 'karma:unit:run']
+        tasks: ['deploy', 'karma:unit:run', 'karma:e2e:run']
       }
 
     },
@@ -83,7 +90,10 @@ module.exports = function (grunt) {
   grunt.registerTask('server', ['execute']);
 
   grunt.registerTask('deploy', ['clean', 'copy', 'concat', 'compass', 'jade']);
-  grunt.registerTask('test', ['deploy', 'karma:continuous']);
 
-  return grunt.registerTask('default', ['deploy', 'karma:unit', 'watch']);
+  grunt.registerTask('test-unit', ['deploy', 'karma:continuous']);
+  grunt.registerTask('test-e2e', ['deploy', 'karma:continuous_e2e']);
+  grunt.registerTask('test', ['deploy', 'test-unit', 'test-e2e']);
+
+  return grunt.registerTask('default', ['deploy', 'karma:unit', 'karma:e2e', 'watch']);
 }
