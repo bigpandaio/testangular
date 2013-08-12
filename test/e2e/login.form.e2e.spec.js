@@ -1,9 +1,25 @@
 describe('End to end test for the login form', function () {
 
-  // TODO - add the two tests.
+  beforeEach(function() {
+    browser().navigateTo('/');;
+  });
 
-  it("Should show error if invalid email");
+  it("Should show error if invalid email", function() {
+    input('username').enter('wileecayote');
+    input('password').enter('testangular');
+    element('input[type="submit"]').click();
 
-  it("Should show be successful if valid username + password");
+    var errorDiv = element('.error', 'Error div');
+    expect(errorDiv.text()).toMatch(/Please.+/);
+    expect(errorDiv.css('color')).toEqual('rgb(235, 73, 35)');
+
+  });
+
+  it("Should show be successful if valid username + password", function() {
+    input('username').enter('wileecayote@acme.com');
+    input('password').enter('testangular');
+    element('input[type="submit"]').click();
+    expect(element('.success').text()).toEqual('hurray!');
+  });
   
 });
