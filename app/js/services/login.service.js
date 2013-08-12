@@ -3,7 +3,7 @@ app.service('LoginService', ['$http', '$q', function ($http, $q) {
   this.login = function (username, password, callback) {
     var deferred = $q.defer();
 
-    var futureResponse = $http.post('http://localhost:3000/login', {username: username, password: password});
+    var futureResponse = $http.post('http://localhost:8000/login', {username: username, password: password});
     futureResponse.then(function () {
       deferred.resolve({});
     }, function (response) {
