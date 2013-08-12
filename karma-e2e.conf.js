@@ -38,6 +38,7 @@ module.exports = function (config) {
     // CLI --browsers Chrome,Firefox,Safari
     browsers: ['Chrome'],
 
+    urlRoot : '/__e2e/',
     proxies: {
       '/': 'http://localhost:8000/'
     },
