@@ -42,6 +42,7 @@ app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', funct
 
         // Step 14 - Add event call for success
         else {
+          $scope.success = "hurray!";
           $rootScope.$broadcast("LoginController.successful");
         }
       });

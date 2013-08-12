@@ -42,5 +42,6 @@ html.no-js(lang='en', ng-app="testangular")
                                   .wrapper
                                       i.icon-lock
                                   input(type='password', name='password', id='password', placeholder='Password', ng-model='password')
-                          input.button(type='button', value='LOGIN', ng-click='login()')
+                          input.button(type='submit', name='submit', value='LOGIN', ng-click='login()')
                           .error {{error}}
+                          .success {{success}}
