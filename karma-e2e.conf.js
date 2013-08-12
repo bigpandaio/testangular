@@ -36,7 +36,7 @@ module.exports = function (config) {
     // - PhantomJS
     // - IE (only Windows)
     // CLI --browsers Chrome,Firefox,Safari
-    browsers: process.env.TRAVIS ? 'Firefox' : ['Chrome', 'Firefox', 'Safari'],
+    browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome', 'Firefox', 'Safari'],
 
     urlRoot : '/__e2e/',
     proxies: {
