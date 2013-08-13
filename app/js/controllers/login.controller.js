@@ -1,22 +1,23 @@
-app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', function($rootScope, $scope, loginService) {
-
-  $scope.username = null;
-  $scope.password = null;
-  $scope.error = null;
+app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', 'i18n', function($rootScope, $scope, loginService, i18n) {
 
   $scope.login = function() {
-    if (!$scope.valid) {
-      $scope.error = "Invalid email format";
 
-    } else {
+    // Set error with a message in case the valid flag is false. Notice that the directive sets the
+    // valid flag to true or false according to the validity of the email address.
+    if (!$scope.valid) {
+      $scope.error = i18n.resolve("Invalid email format");
+
+    }
+
+    else {
       $scope.error = null;
       $scope.success = null;
 
       loginService.login($scope.username, $scope.password, function(error) {
         if (error) {
-          $scope.error = error.message;
+          $scope.error = i18n.resolve(error.message)
         } else {
-          $scope.success = "hurray!";
+          $scope.success = i18n.resolve("hurray!");
           $rootScope.$broadcast("LoginController.successful");
         }
       });
