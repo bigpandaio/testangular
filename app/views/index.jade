@@ -1,22 +1,8 @@
-!!! 5
-//if lt IE 7
-  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='en')
-//if IE 7
-  html.no-js.lt-ie9.lt-ie8(lang='en')
-//if IE 8
-  html.no-js.lt-ie9(lang='en')
-//[if gt IE 8]><!
+!!!5
 html.no-js(lang='en', ng-app="testangular")
-    //<![endif]
 
     head
-        meta(charset='utf-8')
-        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-
         title Login
-        meta(name='description', content='')
-        meta(name='viewport', content='user-scalable=yes')
-
         link(rel='shortcut icon', href='favicon.ico')
         link(rel='stylesheet', href='css/login.css')
         link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')
@@ -25,23 +11,23 @@ html.no-js(lang='en', ng-app="testangular")
         script(src='js/app.js')
 
 
-    body(ng-controller='LoginController')
+    body
       .background
       .main-container
           .dialog-container
               .dialog-box
                   .title LOG IN
-                  form
+                  form(ng-controller='LoginController')
                       .form(signin-validator)
                           .fields
                               .field
                                   .wrapper
                                       i.icon-envelope
-                                  input(type='text', name='username', id='username', placeholder='Email', ng-model='username')
+                                  input(type='text', id='username', placeholder='Email', ng-model='username')
                               .field
                                   .wrapper
                                       i.icon-lock
-                                  input(type='password', name='password', id='password', placeholder='Password', ng-model='password')
-                          input.button(type='submit', name='submit', value='LOGIN', ng-click='login()')
+                                  input(type='password', id='password', placeholder='Password', ng-model='password')
+                          input.button(type='submit', value='LOGIN', ng-click='login()')
                           .error {{error}}
                           .success {{success}}
