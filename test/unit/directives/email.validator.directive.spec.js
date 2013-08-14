@@ -57,7 +57,7 @@ describe('Email validator directive tests', function () {
 
       element.triggerHandler("input");
 
-      expect(scope.valid).to.be.true;
+      expect(scope.valid).to.be.false;
     });
 
 

@@ -1,4 +1,4 @@
-// Step: Start with the directive decleration
+// Step: Start with the directive declaration
 
 app.directive('emailValidator', function() {
 

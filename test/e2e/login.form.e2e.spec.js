@@ -1,5 +1,6 @@
 describe('End to end test for the login form', function () {
 
+  // Step: The navigation command allow to change the location in the brows
   beforeEach(function() {
     browser().navigateTo('/');
   });
@@ -25,3 +26,5 @@ describe('End to end test for the login form', function () {
   });
   
 });
+
+// karma start karma-e2e.conf.js --single-run

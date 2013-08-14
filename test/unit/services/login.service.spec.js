@@ -46,6 +46,8 @@ describe('Login controller tests', function () {
       // BEFORE the LoginService is instantiated
       inject(['$httpBackend', 'LoginService', function ($httpBackend, loginService) {
 
+//        sinon.stub(configuration, 'getDomain').returns('acme.com');
+
         // Step: again we use expect, but this time we set an explicit domain
         $httpBackend.expectPOST(/http:\/\/acme\.com:\d+\/login/).respond(200);
         loginService.login("wileecayote@acme.com", "testangular");
