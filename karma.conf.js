@@ -10,10 +10,11 @@ module.exports = function (config) {
       'test/unit/**/*.spec.js'
     ],
 
-    // use dots reporter, as travis terminal does not support escaping sequences
+    // use dots reporter for travis (travis terminal does not support escaping sequences)
+    // and spec reporter for dev
     // possible values: 'dots', 'progress'
-    // CLI --reporters progress
-    reporters: ['dots'],
+    // CLI --reporters spec
+    reporters: process.env.TRAVIS ? ['dots'] : ['spec'],
 
     // web server port
     port: 9876,
@@ -61,7 +62,10 @@ module.exports = function (config) {
       'karma-phantomjs-launcher',
 
       // Framework
-      'karma-mocha'
+      'karma-mocha',
+
+      // Reporter
+      'karma-spec-reporter'
 
     ]
 
