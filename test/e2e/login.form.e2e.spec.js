@@ -1,7 +1,7 @@
 describe('End to end test for the login form', function () {
 
   beforeEach(function() {
-    browser().navigateTo('/');;
+    browser().navigateTo('/');
   });
 
   it("Should show error if invalid email", function() {
