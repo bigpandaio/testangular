@@ -28,12 +28,7 @@ describe('Login controller tests', function () {
   describe('i18n#resolve() output', function() {
 
     beforeEach(function () {
-      module('testangular', function($provide) {
-        // Step: provide the module with an interface for the i18n service
-        // Because this happens before each test, a new "fresh" object will be
-        // injected into the actual test functions
-        $provide.value('i18n', { resolve: function(message) {} })
-      });
+      module('testangular');
     });
 
     it('should override default error message', inject(function($controller, $rootScope, i18n) {
@@ -59,9 +54,7 @@ describe('Login controller tests', function () {
   describe("Valid username and password format", function () {
 
     beforeEach(function () {
-      module('testangular', function ($provide) {
-        $provide.value("LoginService", { login: function() {}});
-      });
+      module('testangular');
     });
 
     it('should still result in error if user is not authenticated', inject(function ($controller, $rootScope, LoginService) {
