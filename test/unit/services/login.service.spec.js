@@ -1,4 +1,4 @@
-describe('Login controller tests', function () {
+describe('Login service tests', function () {
 
   var expect = chai.expect;
 
