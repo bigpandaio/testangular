@@ -1,3 +1,5 @@
+// TALK ABOUT SINON!!!!
+
 describe('Login controller tests', function () {
 
   var expect = chai.expect;
