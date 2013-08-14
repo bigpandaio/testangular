@@ -38,6 +38,22 @@ describe('Login controller tests', function () {
 
         }]));
 
+    it('should use configured domain', inject(['configuration', function(configuration) {
+
+      sinon.stub(configuration, 'getDomain').returns('acme.com');
+
+      // Step: we inject twice to allow the configuration service to be stubbed
+      // BEFORE the LoginService is instantiated
+      inject(['$httpBackend', 'LoginService', function ($httpBackend, loginService) {
+
+        // Step: again we use expect, but this time we set an explicit domain
+        $httpBackend.expectPOST(/http:\/\/acme\.com:\d+\/login/).respond(200);
+        loginService.login("wileecayote@acme.com", "testangular");
+        $httpBackend.flush();
+      }])
+
+    }]))
+
     it('should handle HTTP status code 401', function() {
 
       inject(['$httpBackend', 'LoginService', function($httpBackend, loginService) {
@@ -55,21 +71,6 @@ describe('Login controller tests', function () {
       }]);
     })
 
-    it('should use configured domain', inject(['configuration', function(configuration) {
-
-      sinon.stub(configuration, 'getDomain').returns('acme.com');
-
-      // Step: we inject twice to allow the configuration service to be stubbed
-      // BEFORE the LoginService is instantiated
-      inject(['$httpBackend', 'LoginService', function ($httpBackend, loginService) {
-
-        // Step: again we use expect, but this time we set an explicit domain
-        $httpBackend.expectPOST(/http:\/\/acme\.com:\d+\/login/).respond(200);
-        loginService.login("wileecayote@acme.com", "testangular");
-        $httpBackend.flush();
-      }])
-
-    }]))
   })
 
   // Step: It is considered best practice to verify, after each test case
