@@ -2,11 +2,11 @@ describe('Login controller tests', function () {
 
   var expect = chai.expect;
 
-  describe('Invalid username format', function () {
+  beforeEach(function () {
+    module('testangular');
+  });
 
-    beforeEach(function () {
-      module('testangular');
-    });
+  describe('Invalid username format', function () {
 
     it('should set the error message to "invalid email format"',
         inject(function ($controller, $rootScope) {
@@ -27,10 +27,6 @@ describe('Login controller tests', function () {
   });
 
   describe('i18n#resolve() output', function() {
-
-    beforeEach(function () {
-      module('testangular');
-    });
 
     it('should override default error message', inject(function($controller, $rootScope, i18n) {
       // Step: a simple stub of the i18n service which returns a different message
@@ -53,10 +49,6 @@ describe('Login controller tests', function () {
 
 
   describe("Valid username and password format", function () {
-
-    beforeEach(function () {
-      module('testangular');
-    });
 
     it('should still result in error if user is not authenticated',
         inject(function ($controller, $rootScope, LoginService) {
