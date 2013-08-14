@@ -50,6 +50,28 @@ describe('Login controller tests', function () {
 
         }]));
 
+    // A common pitfall with services is trying to test something that depends on
+    // state change that happens during the initialization of the service (when using angular.factory()).
+    // The way to go around this issue is to use multiple injects in different stages of the test:
+    // First, we inject the configuration service and change its behaviour. Only then we inject the
+    // LoginService. As a result, when the LoginService is initialized, it will use the stub response
+    // of the configuration service instead of the default value.
+    it('should use configured domain', inject(['configuration', function(configuration) {
+
+      sinon.stub(configuration, 'getDomain').returns('acme.com');
+
+      // Step: we inject twice to allow the configuration service to be stubbed
+      // BEFORE the LoginService is instantiated
+      inject(['$httpBackend', 'LoginService', function ($httpBackend, loginService) {
+
+        // Step: again we use expect, but this time we set an explicit domain
+        $httpBackend.expectPOST(/http:\/\/acme\.com:\d+\/login/).respond(200);
+        loginService.login("wileecayote@acme.com", "testangular");
+        $httpBackend.flush();
+      }])
+
+    }]))
+
     // This is the exact same test case as above only this time we use the Promise paradigm instead of plain old callbacks.
     // Look how nice the code looks!
     it('should handle HTTP status code 401', function() {
@@ -69,21 +91,6 @@ describe('Login controller tests', function () {
       }]);
     })
 
-    it('should use configured domain', inject(['configuration', function(configuration) {
-
-      sinon.stub(configuration, 'getDomain').returns('acme.com');
-
-      // Step: we inject twice to allow the configuration service to be stubbed
-      // BEFORE the LoginService is instantiated
-      inject(['$httpBackend', 'LoginService', function ($httpBackend, loginService) {
-
-        // Step: again we use expect, but this time we set an explicit domain
-        $httpBackend.expectPOST(/http:\/\/acme\.com:\d+\/login/).respond(200);
-        loginService.login("wileecayote@acme.com", "testangular");
-        $httpBackend.flush();
-      }])
-
-    }]))
   })
 
   // Step: It is considered best practice to verify, after each test case, that
