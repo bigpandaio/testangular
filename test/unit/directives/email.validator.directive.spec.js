@@ -2,11 +2,15 @@
 
 describe('Email validator directive tests', function () {
 
-  // Step: set expect and beforeEach
+
 
   var expect = chai.expect;
 
+  // Step: Like in other test frameworks we are able to run code before
+  // each test
   beforeEach(function () {
+    // each angular app define its module -
+    // This is how we load the relevant app to be used later in injections
     module('testangular');
   });
 
@@ -17,6 +21,8 @@ describe('Email validator directive tests', function () {
 
   var element;
 
+  // Step: Inject function - use the rootScope and compile service to create
+  // test objects
   beforeEach(inject(function($rootScope, $compile) {
     scope = $rootScope.$new();
     scope.valid = false;
@@ -31,14 +37,12 @@ describe('Email validator directive tests', function () {
 
   describe('Invalid Email', function() {
 
-    // Step: Another test with an invalid value
-
     it('should be invalid if username isn\'t an email', function() {
 
-      // Set the value of the element
+      // Step - Set the value of the element
       element.val("invalid-email");
 
-      // Trigger the event to allow the directive to recalculate the value
+      // Step - Trigger the event to allow the directive to recalculate the value
       element.triggerHandler("input");
 
       // Step: Expecting valid scope property to be false
