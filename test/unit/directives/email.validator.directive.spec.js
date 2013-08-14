@@ -21,9 +21,9 @@ describe('Email validator directive tests', function () {
     scope = $rootScope.$new();
     scope.valid = false;
 
-    // Compile the HTML and link to the scope.
-    var compiled = $compile(html);
-    element = compiled(scope);
+    // Compile the HTML and link the scope.
+    var link = $compile(html);
+    element = link(scope);
   }));
 
 
