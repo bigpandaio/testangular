@@ -1,4 +1,5 @@
-app.factory('LoginService', ['$http', '$q', 'configuration', function ($http, $q, configuration) {
+app.factory('LoginService', ['$http', '$q', 'configuration',
+  function ($http, $q, configuration) {
 
   var domain = configuration.getDomain();
 
@@ -8,7 +9,9 @@ app.factory('LoginService', ['$http', '$q', 'configuration', function ($http, $q
       var deferred = $q.defer();
 
       // Step: how we use $http to post a request to our server
-      var futureResponse = $http.post('http://' + domain + ':8000/login', {username: username, password: password});
+      var futureResponse =
+          $http.post('http://' + domain + ':8000/login',
+                      {username: username, password: password});
 
 
       futureResponse.then(function () {

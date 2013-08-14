@@ -1,4 +1,5 @@
-app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', 'i18n', function($rootScope, $scope, loginService, i18n) {
+app.controller('LoginController', ['$rootScope', '$scope', 'LoginService', 'i18n',
+  function($rootScope, $scope, loginService, i18n) {
 
   $scope.login = function() {
 

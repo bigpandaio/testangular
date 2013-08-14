@@ -8,7 +8,8 @@ describe('Login controller tests', function () {
       module('testangular');
     });
 
-    it('should set the error message to "invalid email format"', inject(function ($controller, $rootScope) {
+    it('should set the error message to "invalid email format"',
+        inject(function ($controller, $rootScope) {
 
       // Step: controller construction
       var scope = $rootScope.$new();
@@ -57,7 +58,8 @@ describe('Login controller tests', function () {
       module('testangular');
     });
 
-    it('should still result in error if user is not authenticated', inject(function ($controller, $rootScope, LoginService) {
+    it('should still result in error if user is not authenticated',
+        inject(function ($controller, $rootScope, LoginService) {
 
       // Step: this stub makes sure that callback function,
       // which is the third argument of the LoginService#login() function),
@@ -77,7 +79,8 @@ describe('Login controller tests', function () {
       expect(scope.error).to.be.eq("Invalid username or password");
     }));
 
-    it('should broadcast success if user is authenticated', inject(function ($controller, $rootScope, LoginService) {
+    it('should broadcast success if user is authenticated',
+        inject(function ($controller, $rootScope, LoginService) {
 
       // Step: we can use stub#yields() instead of callsArgWith to get a cleaner code
       sinon.stub(LoginService, "login").yields(null, {});
