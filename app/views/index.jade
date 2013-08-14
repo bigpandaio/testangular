@@ -18,12 +18,12 @@ html.no-js(lang='en', ng-app="testangular")
               .dialog-box
                   .title LOG IN
                   form(ng-controller='LoginController')
-                      .form(signin-validator)
+                      .form
                           .fields
                               .field
                                   .wrapper
                                       i.icon-envelope
-                                  input(type='text', id='username', placeholder='Email', ng-model='username')
+                                  input(email-validator, type='text', id='username', placeholder='Email', ng-model='username')
                               .field
                                   .wrapper
                                       i.icon-lock
