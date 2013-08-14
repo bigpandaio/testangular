@@ -6,10 +6,11 @@ module.exports = function (config) {
       'test/e2e/**/*.js'
     ],
 
-    // use dots reporter, as travis terminal does not support escaping sequences
+    // use dots reporter for travis (travis terminal does not support escaping sequences)
+    // and spec reporter for dev
     // possible values: 'dots', 'progress'
-    // CLI --reporters progress
-    reporters: ['dots'],
+    // CLI --reporters spec
+    reporters: process.env.TRAVIS ? ['dots'] : ['spec'],
 
     // web server port
     port: 9877,
@@ -36,7 +37,7 @@ module.exports = function (config) {
     // - PhantomJS
     // - IE (only Windows)
     // CLI --browsers Chrome,Firefox,Safari
-    browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome', 'Firefox', 'Safari'],
+    browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome', 'Firefox'],
 
     urlRoot : '/__e2e/',
     proxies: {
@@ -63,7 +64,10 @@ module.exports = function (config) {
       'karma-safari-launcher',
 
       //Framework
-      'karma-ng-scenario'
+      'karma-ng-scenario',
+
+      // Reporter
+      'karma-spec-reporter'
     ]
 
 
